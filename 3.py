@@ -1,19 +1,5 @@
 from typing import List
 
-# class Solution:
-#     def moveZeroes(self, nums: List[int]) -> None:
-#         op = 0
-#         i = 0
-#         while(op < len(nums)):
-#             op += 1
-#             if nums[i] == 0:
-#                 del nums[i]
-#                 nums.append(0)
-#             else:
-#                 i += 1
-#             if op >= len(nums):
-#                 break
-
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         max_length = 0

@@ -12,21 +12,6 @@ using namespace std;
 #include<queue>
 #include<stack>
 
-// class Solution {
-// public:
-//     void moveZeroes(vector<int>& nums) {
-// 		int num_0 = 0;
-// 		for(int i = 0; i < nums.size() - num_0; ++i) {
-// 			if(nums[i] == 0) {
-// 				nums.erase(nums.begin() + i);
-// 				nums.push_back(0);
-// 				--i;
-// 				++num_0;
-// 			}
-// 		}
-//     }
-// };
-
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
