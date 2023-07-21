@@ -11,7 +11,7 @@
 class Solution {
 public:
 	int minTaps(int n, vector<int>& ranges) {
-		vector<int> dp(n + 1, 0);
+		vector<int> dp(n + 1);
 		for (int i = 0; i <= n; i++)
 		{
 			if (ranges[i] == 0)
@@ -47,6 +47,5 @@ int main()
 	vector<int> ranges = { 3,4,1,1,0,0 };
 	Solution a;
 	cout << a.minTaps(n, ranges) << endl;
-	cout << "不是不是" << endl;
 	system("pause");
 }
