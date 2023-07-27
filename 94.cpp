@@ -24,7 +24,7 @@ struct TreeNode {
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
-
+        vector<int> out;
     }
 };
 
