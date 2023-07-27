@@ -16,7 +16,7 @@ using namespace std;
 struct ListNode {
     int val;
     ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode(int x) : val(x), next(nullptr) {}
 };
 
 class Solution {
@@ -24,12 +24,12 @@ public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         unordered_map<ListNode*, bool> map;
         ListNode *current = headA;
-        while(current != NULL) {
+        while(current != nullptr) {
             map[current] = true;
             current = current->next;
         }
         current = headB;
-        while(current != NULL) {
+        while(current != nullptr) {
             if(map.find(current) != map.end()) {
                 return current;
             }
@@ -41,7 +41,7 @@ public:
 
 void print_listnode(ListNode *head) {
     ListNode *current = head;
-    while(current != NULL) {
+    while(current != nullptr) {
         cout << current->val << " ";
         current = current->next;
     }

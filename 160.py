@@ -8,7 +8,12 @@ class ListNode:
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        return headA
+        pA = headA
+        pB = headB
+        while pA != pB:
+            pA = headB if pA == None else pA.next
+            pB = headA if pB == None else pB.next
+        return pA
 
 def print_listnode(head: ListNode):
     while head != None:
@@ -31,4 +36,4 @@ if __name__ == '__main__':
 
     sol = Solution()
     head = sol.getIntersectionNode(headA, headB)
-    print_listnode(headA)
+    print_listnode(head)
