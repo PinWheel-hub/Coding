@@ -1,7 +1,6 @@
 /*
-最大子数组和 贪心算法/分治法
-给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
-子数组 是数组中的一个连续部分。
+矩阵置0 
+给定一个 m x n 的矩阵，如果一个元素为 0 ，则将其所在行和列的所有元素都设为 0 。请使用 原地 算法。
 */
 using namespace std;
 #include<vector>
@@ -15,27 +14,41 @@ using namespace std;
 
 class Solution {
 public:
-    int maxSubArray(vector<int>& nums) {
-        int maxsub = INT_MIN;
-        int minsum = 0;
-        int sum = 0;
-        for(int i = 0; i < nums.size(); ++i) {
-            sum += nums[i];
-            maxsub = max(maxsub, sum - minsum);
-            minsum = min(minsum, sum);
+    void setZeroes(vector<vector<int>>& matrix) {
+        unordered_map<int, bool> row;
+        unordered_map<int, bool> col;
+        for(int i = 0; i < matrix.size(); ++i) {
+            for(int j = 0; j < matrix[i].size(); ++j) {
+                if(matrix[i][j] == 0) {
+                    row[i] = true;
+                    col[j] = true;
+                }
+            }
         }
-        return maxsub;
+        for(auto r : row) {
+            for(int i = 0; i < matrix[0].size(); ++i) {
+                matrix[r.first][i] = 0;
+            }
+        }
+        for(auto c : col) {
+            for(int i = 0; i < matrix.size(); ++i) {
+                matrix[i][c.first] = 0;
+            }
+        }
     }
 };
 
 int main()
 {
-	vector<int> nums = {-2,1,-3,4,-1,2,1,-5,4};
+	vector<vector<int>> matrix = {{0,1,2,0},{3,4,5,2},{1,3,1,5}};
 	Solution sol;
-	cout << sol.maxSubArray(nums) << endl;
-	// for(auto num : nums) {
-	// 	cout << num << " ";
-	// }
-	// cout << endl;
+	sol.setZeroes(matrix);
+	for(auto row : matrix) {
+		for(auto element : row) {
+		cout << element << " ";
+	    }
+        cout << endl;
+	}
+	cout << endl;
 	system("pause");
 }
