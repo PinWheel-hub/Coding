@@ -17,7 +17,7 @@ class Solution {
 public:
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> result;
-        function<void(vector<bool>, vector<int>)> dfs = [&](vector<bool> used, vector<int> get)->void {
+        function<void(vector<bool>, vector<int>)> dfs = [&](vector<bool> used, vector<int> get) -> void {
             for(int i = 0; i < used.size(); ++i) {
                 if(!used[i]) {
                     used[i] = true;
