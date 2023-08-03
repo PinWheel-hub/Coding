@@ -1,20 +1,31 @@
 from typing import List, Optional
 import sys
+import random
 
 class Solution:
-    def isValid(self, s: str) -> bool:
-        match = {")": "(", "]": "[", "}": "{"}
-        stack = []
-        for c in s:
-            if len(stack) == 0:
-                stack.append(c)
-            elif c in match and match[c] == stack[-1]:
-                del stack[-1]
-            else:
-                stack.append(c)
-        return len(stack) == 0 
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        def quick(l, r):
+            if l == r:
+                return l
+            index = random.randint(l, r)
+            nums[index], nums[r] = nums[r], nums[index]
+            j = l - 1
+            for i in range(l, r):
+                if nums[r] > nums[i]:
+                    j += 1
+                    nums[j], nums[i] = nums[i], nums[j]
+                i += 1
+            nums[j + 1], nums[r] = nums[r], nums[j + 1]
+            return j + 1
+        def findk(l, r):
+            q = quick(l, r)
+            if q == len(nums) - k:
+                return nums[q]
+            return findk(l, q - 1) if q > len(nums) - k else findk(q + 1, r)
+        random.seed(0)
+        return findk(0, len(nums) - 1)
 
 if __name__ == '__main__':
-    s = r"()[]{}"
+    nums = [3,2,3,1,2,4,5,5,6]
     sol = Solution()
-    print(sol.isValid(s))
+    print(sol.findKthLargest(nums, 4))
