@@ -28,7 +28,6 @@ int main() {
     // 查询并输出哈希表中的值
     cout << "Value at key 1: " << customHashMap[key1] << endl;
     cout << "Value at key 2: " << customHashMap[key2] << endl;
-
     system("pause");
 }
 
