@@ -1,7 +1,9 @@
 /*
-字母异位词分组 哈希
-给你一个字符串数组，请你将 字母异位词 组合在一起。可以按任意顺序返回结果列表。
-字母异位词 是由重新排列源单词的所有字母得到的一个新单词。
+盛最多水的容器 双指针
+给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
+找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+返回容器可以储存的最大水量。
+说明：你不能倾斜容器。
 */
 using namespace std;
 #include<vector>
@@ -18,45 +20,41 @@ using namespace std;
 
 class Solution {
 public:
-    struct ArrayHash {
-        size_t operator()(const std::array<int, 26>& arr) const {
-            return accumulate(arr.begin(), arr.end(), 0u, [&](size_t acc, int num) {
-                return (acc << 1) ^ num;
-            });
+    int maxArea(vector<int>& height) {
+        int l = 0, r = height.size() - 1;
+        int maxarea = min(height[l], height[r]) * (r - l);
+        while(l < r) {
+            if(height[l] > height[r]) {
+                int h_r = height[r];
+                while(r > l) {
+                    if(height[--r] > h_r) {
+                        break;
+                    }
+                }
+                if(min(height[l], height[r]) * (r - l) > maxarea) {
+                    maxarea = min(height[l], height[r]) * (r - l);
+                }
+            } else {
+                int h_l = height[l];
+                while(r > l) {
+                    if(height[++l] > h_l) {
+                        break;
+                    }
+                }
+                if(min(height[l], height[r]) * (r - l) > maxarea) {
+                    maxarea = min(height[l], height[r]) * (r - l);
+                }
+            }
         }
-    };
-    vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        unordered_map<array<int, 26>, int, ArrayHash> map;
-        vector<vector<string>> ans;
-        int index = 0;
-        for(auto str : strs) {
-            array<int, 26> count = {0};
-            for(auto c : str) {
-                count[c - 'a']++;
-            }
-            if(map.find(count) != map.end()) {
-                ans[map[count]].push_back(str);
-            }
-            else {
-                map[count] = index++;
-                ans.push_back({str});
-            }
-        }
-        return ans;
+        return maxarea;
     }
 };
 
 int main()
 {
-    vector<string> strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+    vector<int> height = {1,8,6,2,5,4,8,3,7};
 	Solution sol;
-    vector<vector<string>> ans = sol.groupAnagrams(strs);
-    for(auto strings : ans) {
-        for(auto str : strings) {
-            cout << str << " ";
-        }
-        cout << endl;
-    }
+    cout << sol.maxArea(height) << endl;
 	system("pause");
 }
 
