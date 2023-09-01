@@ -28,7 +28,6 @@ public:
                 current = intervals[i];
             }
             else {
-                current[0] = min(current[0], intervals[i][0]);
                 current[1] = max(current[1], intervals[i][1]);
             }
         }
