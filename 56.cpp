@@ -1,7 +1,6 @@
 /*
-滑动窗口最大值 单调队列 hard
-给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
-返回 滑动窗口中的最大值 。
+合并区间
+以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
 */
 using namespace std;
 #include<vector>
@@ -20,15 +19,15 @@ class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
         vector<vector<int>> ans;
-        sort(intervals.begin(), intervals.end(), [&](vector<int> a, vector<int> b) {return a[0] < b[0];});
+        sort(intervals.begin(), intervals.end(), [&](vector<int>& a, vector<int>& b) {return a[0] < b[0];});
         vector<int> current = intervals[0];
-        for(int i = 1; i < intervals.size(); ++i) {
-            if(intervals[i][0] > current[1]) {
+        for(const auto& interval : intervals) {
+            if(interval[0] > current[1]) {
                 ans.push_back(current);
-                current = intervals[i];
+                current = interval;
             }
             else {
-                current[1] = max(current[1], intervals[i][1]);
+                current[1] = max(current[1], interval[1]);
             }
         }
         ans.push_back(current);
