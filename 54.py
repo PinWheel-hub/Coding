@@ -3,24 +3,29 @@ import sys
 import random
 
 class Solution:
-    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        ans = []
-        def sort_key(interval):
-            return interval[0]
-        intervals = sorted(intervals, key=sort_key, reverse=False)
-        current = intervals[0]
-        del intervals[0]
-        for interval in intervals:
-            if current[1] < interval[0]:
-                ans.append(current)
-                current = interval
-            else:
-                current[1] = max(current[1], interval[1])
-        ans.append(current)
-        return ans
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        if not matrix or not matrix[0]:
+            return list()
+        
+        rows, columns = len(matrix), len(matrix[0])
+        visited = [[False] * columns for _ in range(rows)]
+        total = rows * columns
+        order = [0] * total
+
+        directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+        row, column = 0, 0
+        directionIndex = 0
+        for i in range(total):
+            order[i] = matrix[row][column]
+            visited[row][column] = True
+            nextRow, nextColumn = row + directions[directionIndex][0], column + directions[directionIndex][1]
+            if not (0 <= nextRow < rows and 0 <= nextColumn < columns and not visited[nextRow][nextColumn]):
+                directionIndex = (directionIndex + 1) % 4
+            row += directions[directionIndex][0]
+            column += directions[directionIndex][1]
+        return order
     
 if __name__ == '__main__':
-    intervals = [[1,3],[2,6],[8,10],[15,18]]
+    matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
     sol = Solution()
-    print(sol.merge(intervals))
-    print(intervals)
+    print(sol.spiralOrder(matrix))
