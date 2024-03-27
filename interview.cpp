@@ -1,4 +1,3 @@
-using namespace std;
 #include<vector>
 #include<iostream>
 #include<algorithm>
@@ -6,27 +5,25 @@ using namespace std;
 #include<unordered_map>
 #include<unordered_set>
 #include<map>
-#include<math.h>
+#include<cmath>
 #include<queue>
 #include<stack>
 #include<functional>
-
+using namespace std;
 
 class Solution {
 public:
-    int func(vector<bool> nums) {
-        int ans = 0;
-        vector<int> dp(2);
-        for(int i = 0; i < nums.size(); ++i) {
-            
-        }
-        
+    void func(vector<int>& nums) {
+
     }
 };
 
 int main() {
     vector<int> nums = {-1, 9, -8, 0, 1, -9, -8, 7};
     Solution sol;
+    for(auto n : nums) {
+        cout << n << ' ';
+    }
     cout << endl;
 	system("pause");
 }
