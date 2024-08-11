@@ -9,7 +9,7 @@ using namespace std;
 #include<algorithm>
 #include<numeric>
 #include<unordered_map>
-#include<math.h>
+#include<cmath>
 #include<queue>
 #include<stack>
 #include<functional>

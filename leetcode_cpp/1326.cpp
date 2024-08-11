@@ -12,7 +12,7 @@ using namespace std;
 #include<numeric>
 #include<unordered_map>
 #include<unordered_set>
-#include<math.h>
+#include<cmath>
 #include<queue>
 #include<stack>
 #include<functional>

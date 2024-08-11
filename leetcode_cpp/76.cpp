@@ -11,7 +11,7 @@ using namespace std;
 #include<unordered_set>
 #include<map>
 #include<set>
-#include<math.h>
+#include<cmath>
 #include<queue>
 #include<stack>
 #include<functional>
