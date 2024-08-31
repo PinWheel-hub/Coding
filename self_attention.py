@@ -10,6 +10,7 @@ class Attention_block(nn.Module):
         self.num_heads = num_heads
         self.num_head_channels = channels // num_heads
         self.qkv = nn.Conv1d(channels, channels * 3, 1)
+        self.ln = nn.LayerNorm(normalized_shape=128)
     def forward(self, x):
         B, C, *spatial = x.shape
         x = x.reshape(B, C, -1)
@@ -22,7 +23,11 @@ class Attention_block(nn.Module):
         weight = torch.softmax(weight, dim=-1)
         v = torch.matmul(weight, v)
         v = v.reshape(B, -1, N)
-        return (x + v).reshape(B, C, *spatial)
+        v = v.permute(0, 2, 1)
+        x = x.permute(0, 2, 1)
+        out = self.ln(x + v).permute(0, 2, 1)
+        out = out.reshape(B, C, *spatial)
+        return out
 
 attn = Attention_block(128)
 x = torch.randn((1, 128, 32, 32))
