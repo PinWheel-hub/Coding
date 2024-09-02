@@ -3,17 +3,17 @@
 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
 */
 using namespace std;
-#include<vector>
-#include<iostream>
-#include<algorithm>
-#include<numeric>
-#include<unordered_map>
-#include<unordered_set>
-#include<map>
-#include<cmath>
-#include<queue>
-#include<stack>
-#include<functional>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <numeric>
+#include <unordered_map>
+#include <unordered_set>
+#include <map>
+#include <cmath>
+#include <queue>
+#include <stack>
+#include <functional>
 
 class Solution {
 public:

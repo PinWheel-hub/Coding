@@ -9,16 +9,16 @@ int top() 获取堆栈顶部的元素。
 int getMin() 获取堆栈中的最小元素。
 */
 using namespace std;
-#include<iostream>
-#include<algorithm>
-#include<numeric>
-#include<unordered_map>
-#include<unordered_set>
-#include<map>
-#include<cmath>
-#include<queue>
-#include<stack>
-#include<functional>
+#include <iostream>
+#include <algorithm>
+#include <numeric>
+#include <unordered_map>
+#include <unordered_set>
+#include <map>
+#include <cmath>
+#include <queue>
+#include <stack>
+#include <functional>
 
 class MinStack {
 private:

@@ -3,17 +3,17 @@
 以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
 */
 using namespace std;
-#include<vector>
-#include<iostream>
-#include<algorithm>
-#include<numeric>
-#include<unordered_map>
-#include<unordered_set>
-#include<map>
-#include<cmath>
-#include<queue>
-#include<stack>
-#include<functional>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <numeric>
+#include <unordered_map>
+#include <unordered_set>
+#include <map>
+#include <cmath>
+#include <queue>
+#include <stack>
+#include <functional>
 
 class Solution {
 public:
